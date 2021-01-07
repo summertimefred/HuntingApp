@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HuntingApp
 {
@@ -76,6 +77,29 @@ namespace HuntingApp
             {
                 Console.WriteLine("YOU DIED!!!!!!!");
             }
+
+            
+            string now = System.DateTime.Now.ToString("yyyyMMddHHmmsss");
+            string filename = "huntingapp" + now + ".txt";
+
+            using (StreamWriter outputFile = new StreamWriter(filename))
+            {
+
+                outputFile.WriteLine("************************************************");
+                outputFile.WriteLine("FINAL REPORT CARD");
+                outputFile.WriteLine("-----------------");
+                outputFile.WriteLine("Date:" + now);
+                outputFile.WriteLine("Username:" + player1.Username);
+                outputFile.WriteLine("Score:" + player1.Score);
+                outputFile.WriteLine("Health:" + player1.Health);
+
+                if (player1.Health <= 0)
+                {
+                    outputFile.WriteLine("YOU DIED!!!!!!!");
+                }
+
+            }
+
 
             //Animal animal1 = game.HuntAnimal();
 
